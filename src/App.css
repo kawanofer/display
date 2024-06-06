@@ -1,0 +1,101 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:root {
+  --speed: 100s;
+  --transition: 50s;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  color: hsl(0 0% 10%);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+  font-weight: 100;
+  background-image: url("./cwb-build.jpeg");
+  background-size: cover;
+}
+
+main {
+  padding: 0;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(133, 154, 186);
+  color: white;
+}
+
+.marquee-container {
+  box-sizing: border-box;
+  margin-top: 8%;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marquee__inner {
+  animation: marquee var(--speed) linear infinite;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+/* Adjust the animation duration and direction as needed */
+@keyframes marquee {
+  from {
+    transform: translateX(15%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.items {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  border: 1px solid hsl(0 0% 90%);
+  color: hsl(0 0% 10%);
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-size: 24px;
+  margin-right: 8px;
+  gap: 0.5rem;
+  height: auto;
+  justify-content: start;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+  width: 500px;
+  transition: transform var(--transition), scale var(--transition),
+    background-color 0.25s, color 0.25s, border 0.25s, box-shadow 0.25s;
+  scale: calc(1 + (var(--active, 0) * 0.05));
+  transform: translate3d(0, 0, calc(var(--active, 0) * 24px));
+}
+
+.items__line {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.items span {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.items__text {
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
